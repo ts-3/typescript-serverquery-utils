@@ -302,5 +302,60 @@ let TS3Utils = exports = module.exports = {
     ret = this.unescapeBackslashes(ret)
 
     return ret;
+  },
+
+  /**
+   * Build Query
+   *
+   * @description Build the query from parameters
+   * @since 1.1.0
+   * @param String str Command name
+   * @param Object params Parameters
+   * @param Array flags Flags
+   * @return String Escaped query string
+   */
+  buildQuery: function(cmd, params, flags) {
+
+    // Validate the type of cmd
+    if(typeof cmd !== "string") {
+      return new Error('The command must be a string!')
+    }
+
+    // Validate the type of params
+    if(typeof params !== "object") {
+      return new Error('The parameters must be a JSON object!')
+    }
+
+    // Validate the type of flags
+    if(Object.prototype.toString.call(flags) !== '[object Array]') {
+      return new Error('The flags must be an array!')
+    }
+
+    let self = this
+    let query = cmd
+
+    for(let k in params) {
+
+      let v = params[k]
+
+      if(Object.prototype.toString.call(v) === '[object Array]') {
+
+        let paramOpts = v.map(function(val) {
+          return self.escape(k) + '=' + self.escape(val)
+        })
+
+        query += ' ' + paramOpts.join('|')
+
+      } else {
+        query += ' ' + self.escape(k) + '=' + self.escape(v)
+      }
+
+    }
+
+    if(flags.length > 0) {
+      query += ' -' + flags.join(' -')
+    }
+
+    return query
   }
 }

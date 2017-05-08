@@ -6,10 +6,19 @@ Tools for Teamspeak 3 ServerQuery Client
 ## Installation
 
 ```sh
-$ npm install teamspeak3-utils
+$ npm install teamspeak3-utils --save
 ```
 
-# Definitions
+### Build your queries
+The `buildQuery` method is an helper wich allow you to build easily your queries. The query is automaticly escaped and the result is returned.
+
+```js
+let ts3utils = require('teamspeak3-utils')
+
+console.log(ts3utils.buildQuery('serveredit', {virtualserver_name:'TeamSpeak ]|[ Server'})) // serveredit virtualserver_name=TeamSpeak\s]\p[\sServer
+```
+
+### Definitions
 The TeamSpeak 3 definitions are available in one object. You can use it to set easily your values.
 
 ```js
@@ -18,7 +27,7 @@ let ts3defs = require('teamspeak3-utils/definitions')
 console.log(ts3defs.CodecEncryptionMode.CODEC_CRYPT_ENABLED) // 2
 ```
 
-## Escaping
+### Escaping
 All the `escape` & `unescape` methods have the same workaround, you provide a string and it returns the final string.
 
 ```js
