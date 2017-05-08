@@ -32,6 +32,18 @@ let TS3Utils = exports = module.exports = {
   },
 
   /**
+   * Escape Bells
+   *
+   * @description Escape bells from the string
+   * @since 1.0.0
+   * @param String str Text to escape
+   * @return String Escaped string
+   */
+  escapeBells: function(str) {
+    return String(str).replace(/\a/g, '\\a')
+  },
+
+  /**
    * Escape Carriages Returns
    *
    * @description Escape carriages returns from the string
@@ -163,6 +175,18 @@ let TS3Utils = exports = module.exports = {
   },
 
   /**
+   * Unescape Bells
+   *
+   * @description Unescape bells from the string
+   * @since 1.0.0
+   * @param String str Text to unescape
+   * @return String Unescaped string
+   */
+  unescapeBells: function(str) {
+    return String(str).replace(/\\a/g, '\a')
+  },
+
+  /**
    * Unescape Carriages Returns
    *
    * @description Unescape carriages returns from the string
@@ -171,7 +195,7 @@ let TS3Utils = exports = module.exports = {
    * @return String Unescaped string
    */
   unescapeCarriagesReturns: function(str) {
-    return String(str).replace(/\\r/g, "\r")
+    return String(str).replace(/\\r/g, '\r')
   },
 
   /**
