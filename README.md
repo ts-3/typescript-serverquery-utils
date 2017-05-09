@@ -26,6 +26,20 @@ if(query instanceof Error) {
 }
 ```
 
+### Parse responses
+The `parseResponse` method provide an easy way to treat your data.
+
+```js
+let ts3utils = require('teamspeak3-utils')
+let res = ts3utils.parseResponse('error id=0 msg=ok')
+
+if(res instanceof Error) {
+  console.log('Error: ' + query.message)
+} else {
+  console.log(res) // [ { error: '', id: 0, msg: 'ok' } ]
+}
+```
+
 ### Definitions
 The TeamSpeak 3 definitions are available in one object. You can use it to set easily your values.
 
