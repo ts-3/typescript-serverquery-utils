@@ -31,13 +31,13 @@ describe('buildQuery', function() {
     assert.equal(query.message, 'The command must be a string!')
   })
 
-  it('Should return command type error', function() {
+  it('Should return parameters type error', function() {
     let query = ts3utils.buildQuery('fakecmd', '', [])
     expect(query).to.be.an.instanceof(Error)
     assert.equal(query.message, 'The parameters must be a JSON object!')
   })
 
-  it('Should return command type error', function() {
+  it('Should return flags type error', function() {
     let query = ts3utils.buildQuery('fakecmd', {}, {})
     expect(query).to.be.an.instanceof(Error)
     assert.equal(query.message, 'The flags must be an array!')
