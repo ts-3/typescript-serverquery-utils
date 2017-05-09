@@ -1,55 +1,44 @@
 {
-  "HostMessageMode": {
-    "HostMessageMode_NONE": 0,
-    "HostMessageMode_LOG": 1,
-    "HostMessageMode_MODAL": 2,
-    "HostMessageMode_MODALQUIT": 3
-  },
-  "HostBannerMode": {
-    "HostBannerMode_NOADJUST": 0,
-    "HostBannerMode_IGNOREASPECT": 1,
-    "HostBannerMode_KEEPASPECT": 2
-  },
-  "Codec": {
-    "CODEC_SPEEX_NARROWBAND": 0,
-    "CODEC_SPEEX_WIDEBAND": 1,
-    "CODEC_SPEEX_ULTRAWIDEBAND": 2,
-    "CODEC_CELT_MONO": 3
-  },
-  "CodecEncryptionMode": {
-    "CODEC_CRYPT_INDIVIDUAL": 0,
-    "CODEC_CRYPT_DISABLED": 1,
-    "CODEC_CRYPT_ENABLED": 2
-  },
-  "TextMessageTargetMode": {
-    "TextMessageTarget_CLIENT": 1,
-    "TextMessageTarget_CHANNEL": 2,
-    "TextMessageTarget_SERVER": 3
-  },
-  "LogLevel": {
-    "LogLevel_ERROR": 1,
-    "LogLevel_WARNING": 2,
-    "LogLevel_DEBUG": 3,
-    "LogLevel_INFO": 4
-  },
-  "ReasonIdentifier": {
-    "REASON_KICK_CHANNEL": 4,
-    "REASON_KICK_SERVER": 5
-  },
-  "PermissionGroupDatabaseTypes": {
-    "PermGroupDBTypeTemplate": 0,
-    "PermGroupDBTypeRegular": 1,
-    "PermGroupDBTypeQuery": 2
-  },
-  "PermissionGroupTypes": {
-    "PermGroupTypeServerGroup": 0,
-    "PermGroupTypeGlobalClient": 1,
-    "PermGroupTypeChannel": 2,
-    "PermGroupTypeChannelGroup": 3,
-    "PermGroupTypeChannelClient": 4
-  },
-  "TokenType": {
-    "TokenServerGroup": 0,
-    "TokenChannelGroup": 1
-  }
+  "HostMessageMode_NONE": 0,
+  "HostMessageMode_LOG": 1,
+  "HostMessageMode_MODAL": 2,
+  "HostMessageMode_MODALQUIT": 3,
+
+  "HostBannerMode_NOADJUST": 0,
+  "HostBannerMode_IGNOREASPECT": 1,
+  "HostBannerMode_KEEPASPECT": 2,
+
+  "CODEC_SPEEX_NARROWBAND": 0,
+  "CODEC_SPEEX_WIDEBAND": 1,
+  "CODEC_SPEEX_ULTRAWIDEBAND": 2,
+  "CODEC_CELT_MONO": 3,
+
+  "CODEC_CRYPT_INDIVIDUAL": 0,
+  "CODEC_CRYPT_DISABLED": 1,
+  "CODEC_CRYPT_ENABLED": 2,
+
+  "TextMessageTarget_CLIENT": 1,
+  "TextMessageTarget_CHANNEL": 2,
+  "TextMessageTarget_SERVER": 3,
+
+  "LogLevel_ERROR": 1,
+  "LogLevel_WARNING": 2,
+  "LogLevel_DEBUG": 3,
+  "LogLevel_INFO": 4,
+
+  "REASON_KICK_CHANNEL": 4,
+  "REASON_KICK_SERVER": 5,
+
+  "PermGroupDBTypeTemplate": 0,
+  "PermGroupDBTypeRegular": 1,
+  "PermGroupDBTypeQuery": 2,
+
+  "PermGroupTypeServerGroup": 0,
+  "PermGroupTypeGlobalClient": 1,
+  "PermGroupTypeChannel": 2,
+  "PermGroupTypeChannelGroup": 3,
+  "PermGroupTypeChannelClient": 4,
+
+  "TokenServerGroup": 0,
+  "TokenChannelGroup": 1
 }

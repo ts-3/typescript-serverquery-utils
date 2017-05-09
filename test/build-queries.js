@@ -37,7 +37,7 @@ describe('buildQuery', function() {
     assert.equal(ts3utils.buildQuery(
       'clientkick',
       {
-        reasonid: ts3defs.ReasonIdentifier.REASON_KICK_SERVER,
+        reasonid: ts3defs.REASON_KICK_SERVER,
         reasonmsg: 'Go away!',
         clid: [1,2,3]
       },
@@ -52,7 +52,7 @@ describe('buildQuery', function() {
       ts3utils.buildQuery(
         'fakecmd',
         {
-          reasonid: ts3defs.ReasonIdentifier.REASON_KICK_SERVER,
+          reasonid: ts3defs.REASON_KICK_SERVER,
           reasonmsg: 'Go away!',
           clid: [1,2,3]
         },

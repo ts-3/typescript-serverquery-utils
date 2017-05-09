@@ -24,7 +24,7 @@ The TeamSpeak 3 definitions are available in one object. You can use it to set e
 ```js
 let ts3defs = require('teamspeak3-utils/definitions')
 
-console.log(ts3defs.CodecEncryptionMode.CODEC_CRYPT_ENABLED) // 2
+console.log(ts3defs.CODEC_CRYPT_ENABLED) // 2
 ```
 
 ### Escaping

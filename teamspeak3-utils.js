@@ -17,7 +17,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-let TS3Utils = exports = module.exports = {
+exports = module.exports = {
 
   /**
    * Escape Backslashes
