@@ -2,6 +2,7 @@
 Tools for Teamspeak 3 ServerQuery Client
 
 [![Build Status](https://travis-ci.org/antoine-pous/node-teamspeak3-utils.svg?branch=master)](https://travis-ci.org/antoine-pous/node-teamspeak3-utils)
+[![Dependency Status](https://gemnasium.com/badges/github.com/antoine-pous/node-teamspeak3-utils.svg)](https://gemnasium.com/github.com/antoine-pous/node-teamspeak3-utils)
 
 ## Installation
 
@@ -12,10 +13,17 @@ $ npm install teamspeak3-utils --save
 ### Build your queries
 The `buildQuery` method is an helper wich allow you to build easily your queries. The query is automaticly escaped and the result is returned.
 
+If an error is occurred, the result is an instance of `Error`
+
 ```js
 let ts3utils = require('teamspeak3-utils')
+let query = ts3utils.buildQuery('serveredit', {virtualserver_name:'TeamSpeak ]|[ Server'})
 
-console.log(ts3utils.buildQuery('serveredit', {virtualserver_name:'TeamSpeak ]|[ Server'})) // serveredit virtualserver_name=TeamSpeak\s]\p[\sServer
+if(query instanceof Error) {
+  console.log('Error: ' + query.message)
+} else {
+  console.log(query) // serveredit virtualserver_name=TeamSpeak\s]\p[\sServer  
+}
 ```
 
 ### Definitions
@@ -39,26 +47,16 @@ console.log(ts3utils.unescape('Hello\\sworld!')) // Hello world!
 
 You can use specifics methods if you need, here are the methods :
 
-- escapeBackslashes
-- unescapeBackslashes
-- escapeBell
-- unescapeBell
-- escapeCarriagesReturns
-- unescapeCarriagesReturns
-- escapeFormfeeds
-- unescapeFormfeeds
-- escapeNewlines
-- unescapeNewlines
-- escapePipes
-- unescapePipes
-- unescapeSlashes
-- escapeSlashes
-- escapeTabulations
-- unescapeTabulations
-- escapeVerticalTabulations
-- unescapeVerticalTabulations
-- escapeWhitespaces
-- unescapeWhitespaces
+- escapeBackslashes / unescapeBackslashes
+- escapeBell / unescapeBell
+- escapeCarriagesReturns / unescapeCarriagesReturns
+- escapeFormfeeds / unescapeFormfeeds
+- escapeNewlines / unescapeNewlines
+- escapePipes / unescapePipes
+- unescapeSlashes / escapeSlashes
+- escapeTabulations / unescapeTabulations
+- escapeVerticalTabulations / unescapeVerticalTabulations
+- escapeWhitespaces / unescapeWhitespaces
 
 ## Bugs & suggestions
 If you found bug or have any suggestion feel free to open a ticket
