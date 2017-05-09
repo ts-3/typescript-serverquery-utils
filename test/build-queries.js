@@ -21,8 +21,27 @@
 let ts3utils = require('../teamspeak3-utils')
 let ts3defs = require('../definitions')
 let assert = require('assert')
+let expect = require('chai').expect
 
 describe('buildQuery', function() {
+
+  it('Should return command type error', function() {
+    let query = ts3utils.buildQuery({}, {}, [])
+    expect(query).to.be.an.instanceof(Error)
+    assert.equal(query.message, 'The command must be a string!')
+  })
+
+  it('Should return command type error', function() {
+    let query = ts3utils.buildQuery('fakecmd', '', [])
+    expect(query).to.be.an.instanceof(Error)
+    assert.equal(query.message, 'The parameters must be a JSON object!')
+  })
+
+  it('Should return command type error', function() {
+    let query = ts3utils.buildQuery('fakecmd', {}, {})
+    expect(query).to.be.an.instanceof(Error)
+    assert.equal(query.message, 'The flags must be an array!')
+  })
 
   it('Simple command', function() {
     assert.equal(ts3utils.buildQuery('whoami', {}, []), 'whoami')
