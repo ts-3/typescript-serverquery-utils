@@ -315,19 +315,20 @@ exports = module.exports = {
    * @return String Escaped query string
    */
   buildQuery: function(cmd, params, flags) {
+    let _ = require('underscore')
 
     // Validate the type of cmd
-    if(typeof cmd !== "string") {
+    if(!_.isString(cmd)) {
       return new Error('The command must be a string!')
     }
 
     // Validate the type of params
-    if(typeof params !== "object") {
+    if(!_.isObject(params)) {
       return new Error('The parameters must be a JSON object!')
     }
 
     // Validate the type of flags
-    if(Object.prototype.toString.call(flags) !== '[object Array]') {
+    if(!_.isArray(flags)) {
       return new Error('The flags must be an array!')
     }
 
@@ -357,5 +358,52 @@ exports = module.exports = {
     }
 
     return query
+  },
+
+  /**
+   * Parse response
+   *
+   * @description Parse the response
+   * @since 1.3.0
+   * @param String str Server query response
+   * @return Object Parsed response
+   */
+   parseResponse: function(str) {
+     let _ = require('underscore')
+
+     // Validate the type of str
+     if(!_.isString(str)) {
+       return new Error('The query must be a string!')
+     }
+
+     let self = this
+
+     let rows = str.split('|').map(function(k) {
+
+       let row = {}
+
+       k.split(/\s/).forEach(function(v) {
+
+        if(v.indexOf('=') > -1) {
+          let i = v.indexOf('=')
+          let key = self.unescape(v.substr(0, i))
+          let value = self.unescape(v.substr(i+1, v.length))
+          row[key] = parseInt(value, 10) == value ? parseInt(value, 10) : value
+        } else if(!_.isEmpty(v)) {
+          row[v] = ''
+        }
+
+      })
+
+      if(row.length === 0){
+  			row = null;
+  		} else if(row.length === 1){
+  			row = row.shift();
+  		}
+
+      return row
+    })
+
+    return rows
   }
 }
