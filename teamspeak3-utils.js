@@ -357,7 +357,7 @@ exports = module.exports = {
       query += ' -' + flags.join(' -')
     }
 
-    return query
+    return query + '\n'
   },
 
   /**
