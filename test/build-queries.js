@@ -44,11 +44,11 @@ describe('buildQuery', function() {
   })
 
   it('Simple command', function() {
-    assert.equal(ts3utils.buildQuery('whoami', {}, []), 'whoami')
+    assert.equal(ts3utils.buildQuery('whoami', {}, []), 'whoami\n')
   })
 
   it('Command with parameters and without flags', function() {
-    assert.equal(ts3utils.buildQuery('serveredit', {virtualserver_name:'TeamSpeak ]|[ Server'}, []), 'serveredit virtualserver_name=TeamSpeak\\s]\\p[\\sServer')
+    assert.equal(ts3utils.buildQuery('serveredit', {virtualserver_name:'TeamSpeak ]|[ Server'}, []), 'serveredit virtualserver_name=TeamSpeak\\s]\\p[\\sServer\n')
   })
 
   it('Command with parameters using definitions and multiple values', function() {
@@ -62,7 +62,7 @@ describe('buildQuery', function() {
       },
       []
     ),
-    'clientkick reasonid=5 reasonmsg=Go\\saway! clid=1|clid=2|clid=3')
+    'clientkick reasonid=5 reasonmsg=Go\\saway! clid=1|clid=2|clid=3\n')
   })
 
   it('Fake command with all options', function() {
@@ -77,7 +77,7 @@ describe('buildQuery', function() {
         },
         ['uid','voice']
       ),
-      'fakecmd reasonid=5 reasonmsg=Go\\saway! clid=1|clid=2|clid=3 -uid -voice'
+      'fakecmd reasonid=5 reasonmsg=Go\\saway! clid=1|clid=2|clid=3 -uid -voice\n'
     )
   })
 
