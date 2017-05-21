@@ -3,6 +3,7 @@ Tools for Teamspeak 3 ServerQuery Client
 
 [![Build Status](https://travis-ci.org/antoine-pous/node-teamspeak3-utils.svg?branch=master)](https://travis-ci.org/antoine-pous/node-teamspeak3-utils)
 [![Dependency Status](https://gemnasium.com/badges/github.com/antoine-pous/node-teamspeak3-utils.svg)](https://gemnasium.com/github.com/antoine-pous/node-teamspeak3-utils)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MAKZLQGRSBCT2)
 
 ## Installation
 
