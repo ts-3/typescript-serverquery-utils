@@ -11,6 +11,8 @@ Tools for Teamspeak 3 ServerQuery Client
 $ npm install teamspeak3-utils --save
 ```
 
+**Note:** TeamSpeak3 Utils is embedded into the [TeamSpeak3 Client](https://github.com/antoine-pous/node-teamspeak3-client) package.
+
 ### Build your queries
 The `buildQuery` method is an helper wich allow you to build easily your queries. The query is automaticly escaped and the result is returned.
 
@@ -48,6 +50,41 @@ The TeamSpeak 3 definitions are available in one object. You can use it to set e
 let ts3defs = require('teamspeak3-utils/definitions')
 
 console.log(ts3defs.CODEC_CRYPT_ENABLED) // 2
+```
+
+### Retrieve client version/build
+Since the version 1.4.0 i have introduced the list of client versions/builds for the `desktop`, `android` and `ios`, you can use it as you wish.
+
+```js
+let TS3ClientVersions = require('teamspeak3-utils/client-versions')
+```
+
+**Note:** Sometime build can have several versions and version can have several builds, so the methods always return an array
+
+You can easily get the builds for a specified client version with `getClientBuildByVersion`
+
+```js
+let ts3utils = require('teamspeak3-utils')
+let builds = ts3utils.getClientBuildByVersion('3.0.5', 'desktop')
+
+if(builds instanceof Error) {
+  console.log('Error: ' + builds.message)
+} else {
+  console.log(builds) // [1328254851, 1328791207, 1329129765, 1329301801]
+}
+```
+
+and get the client versions for a specified build with `getClientVersionByBuild`
+
+```js
+let ts3utils = require('teamspeak3-utils')
+let versions = ts3utils.getClientBuildByVersion(1427190433, 'android')
+
+if(versions instanceof Error) {
+  console.log('Error: ' + versions.message)
+} else {
+  console.log(versions) // ['3.0.18', '3.0.18.1']
+}
 ```
 
 ### Escaping
