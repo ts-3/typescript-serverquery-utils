@@ -405,5 +405,45 @@ exports = module.exports = {
     })
 
     return rows
+  },
+
+  /**
+   * Get client builds by version
+   *
+   * @description return the client builds for the specified version
+   * @since 1.0.0
+   * @param String version Searched version
+   * @param String os Search through the OS versions
+   * @return Array Builds found
+   */
+  getClientBuildByVersion: function (version, os) {
+
+    let _ = require('underscore')
+    let TS3ClientVersions = require('./client-versions.json')
+    let builds = []
+
+    if(!_.isString(version)) {
+      return Error('Version parameter must be a string!')
+    }
+
+    if(!_.isString(os)) {
+      return Error('OS parameter must be a string!')
+    }
+
+    os = os.toLowerCase()
+
+    if(!_.isArray(TS3ClientVersions[os])) {
+      return Error('OS ' + os + ' is not supported!')
+    }
+
+    for(let i = 0; i < TS3ClientVersions[os].length; i++) {
+
+      if(TS3ClientVersions[os][i].version === version) {
+        builds.push(TS3ClientVersions[os][i].build)
+      }
+
+    }
+    return builds
   }
+
 }
