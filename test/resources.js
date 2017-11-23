@@ -23,7 +23,6 @@ let assert = require('assert');
 
 describe('Check ressources', function() {
 
-
   it('Load client-versions', function() {
 
     try {

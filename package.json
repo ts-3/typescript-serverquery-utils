@@ -1,6 +1,6 @@
 {
   "name": "@ts3/query-utils",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "TeamSpeak 3 ServerQuery tools",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/antoine-pous/node-teamspeak3-utils#readme",
   "devDependencies": {
+    "@ts3/definitions": "^1.0.0",
     "chai": "^3.5.0",
-    "mocha": "^3.3.0"
+    "mocha": "^3.5.3"
   },
   "dependencies": {
     "@types/lodash": "^4.14.85",

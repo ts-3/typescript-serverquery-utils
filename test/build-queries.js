@@ -19,9 +19,8 @@
  */
 
 let ts3utils = require('../index')
-let ts3defs = require('../definitions')
+let ts3defs = require('@ts3/definitions').TS3Definitions
 let assert = require('assert')
-let expect = require('chai').expect
 
 describe('buildQuery', function() {
 
@@ -38,7 +37,7 @@ describe('buildQuery', function() {
     assert.equal(ts3utils.buildQuery(
       'clientkick',
       {
-        reasonid: ts3defs.REASON_KICK_SERVER,
+        reasonid: ts3defs.ReasonKick.SERVER,
         reasonmsg: 'Go away!',
         clid: [1,2,3]
       },
@@ -53,7 +52,7 @@ describe('buildQuery', function() {
       ts3utils.buildQuery(
         'fakecmd',
         {
-          reasonid: ts3defs.REASON_KICK_SERVER,
+          reasonid: ts3defs.ReasonKick.SERVER,
           reasonmsg: 'Go away!',
           clid: [1,2,3]
         },
