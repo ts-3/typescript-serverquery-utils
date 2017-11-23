@@ -1,10 +1,10 @@
 {
-  "name": "teamspeak3-utils",
-  "version": "1.4.1",
+  "name": "@ts3/query-utils",
+  "version": "1.4.2",
   "description": "TeamSpeak 3 ServerQuery tools",
-  "main": "teamspeak3-utils.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha test/"
+    "test": "./node_modules/.bin/mocha test/"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
     "mocha": "^3.3.0"
   },
   "dependencies": {
-    "underscore": "^1.8.3"
+    "@types/lodash": "^4.14.85",
+    "@types/node": "^8.0.53",
+    "lodash": "^4.17.4"
   }
 }

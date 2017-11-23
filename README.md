@@ -8,10 +8,24 @@ Tools for Teamspeak 3 ServerQuery Client
 ## Installation
 
 ```sh
-$ npm install teamspeak3-utils --save
+$ npm install @ts3/utils --save
 ```
 
-**Note:** TeamSpeak3 Utils is embedded into the [TeamSpeak3 Client](https://github.com/antoine-pous/node-teamspeak3-client) package.
+**Note:** TeamSpeak3 Utils is embedded into the [TeamSpeak3 Query Client](https://github.com/antoine-pous/node-teamspeak3-client) package.
+
+Import what you want where you need it with typescript
+```typescript
+import {parseResponse} from "@ts3/utils";
+console.log(parseResponse("error id=0 msg=ok")) // {id: 0, msg: "ok"}
+```
+
+Or simply use NodeJS
+```typescript
+let TS3Utils = require('@ts3/utils');
+console.log(TS3Utils.parseResponse("error id=0 msg=ok")) // {id: 0, msg: "ok"}
+```
+
+This package is ES6 compliant, it require NodeJS 6+
 
 ### Build your queries
 The `buildQuery` method is an helper wich allow you to build easily your queries. The query is automaticly escaped and the result is returned.

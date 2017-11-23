@@ -18,27 +18,11 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-let _ = require('underscore')
-let assert = require('assert')
-
-// TODO: See if teamspeak.com release official lists to parse for checking permissions, definitions and client-versions
+let _ = require('lodash');
+let assert = require('assert');
 
 describe('Check ressources', function() {
 
-  it('Load definitions', function() {
-
-    try {
-      let TS3Definitions = require('../definitions')
-    } catch(e) {
-      throw new Error(e)
-    }
-
-  })
-
-  it('Test definitions data type', function() {
-    let TS3Definitions = require('../definitions')
-    assert.equal(_.isObject(TS3Definitions) && !_.isArray(TS3Definitions) && !_.isFunction(TS3Definitions), true)
-  })
 
   it('Load client-versions', function() {
 
@@ -48,17 +32,17 @@ describe('Check ressources', function() {
       throw new Error(e)
     }
 
-  })
+  });
 
-  let TS3ClientVersions = require('../client-versions')
+  let TS3ClientVersions = require('../client-versions');
 
   for(let k in TS3ClientVersions) {
 
     it('Test client-versions ' + k + ' type', function() {
-      assert.equal(_.isArray(TS3ClientVersions[k]), true)
+      assert.equal(_.isArray(TS3ClientVersions[k]), true);
       assert.equal(_.isObject(TS3ClientVersions[k][0]) && !_.isArray(TS3ClientVersions[k][0]) && !_.isFunction(TS3ClientVersions[k][0]), true)
     })
 
   }
 
-})
+});

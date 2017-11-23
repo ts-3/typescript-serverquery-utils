@@ -18,29 +18,22 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-let ts3utils = require('../teamspeak3-utils')
-let ts3defs = require('../definitions')
-let assert = require('assert')
-let expect = require('chai').expect
+let ts3utils = require('../index');
+let assert = require('assert');
+let expect = require('chai').expect;
 
 describe('parseResponse', function() {
 
-  it('Should return reponse type error', function() {
-    let rows = ts3utils.parseResponse([])
-    expect(rows).to.be.an.instanceof(Error)
-    assert.equal(rows.message, 'The query must be a string!')
-  })
-
   it('Empty response', function() {
-    let rows = ts3utils.parseResponse('')
-    expect(rows).to.be.an.array
+    let rows = ts3utils.parseResponse('');
+    expect(rows).to.be.an.array;
     assert.equal(rows.length, 1)
-  })
+  });
 
   it('Should return parsed error', function() {
     let err = ts3utils.parseResponse('error id=0 msg=ok')
     expect(err).to.deep.equal([ { error: '', id: 0, msg: 'ok' } ])
-  })
+  });
 
 
   it('Should return parsed response', function() {
@@ -48,4 +41,4 @@ describe('parseResponse', function() {
     expect(rows).to.deep.equal([ { instance: '', instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 }, { instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 } ])
   })
 
-})
+});

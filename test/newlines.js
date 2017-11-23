@@ -18,7 +18,7 @@
  * PERFORMANCE OF THIS SOFTWARE.
  */
 
-let ts3utils = require('../teamspeak3-utils')
+let ts3utils = require('../index')
 let assert = require('assert')
 
 describe('Newlines', function() {
