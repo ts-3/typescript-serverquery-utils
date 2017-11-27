@@ -340,7 +340,7 @@ exports.buildQuery = buildQuery;
  * @return Object Parsed response
  */
 let parseResponse = (str) => {
-    return str.split('|').map((k) => {
+    let rows = str.split('|').map((k) => {
         let row = {};
         k.split(/\s/).forEach((v) => {
             let pos = v.indexOf('=');
@@ -353,8 +353,13 @@ let parseResponse = (str) => {
                 row[v] = '';
             }
         });
+        if (row.length === 0)
+            row = null;
+        if (row.length === 1)
+            row = row.shift();
         return row;
     });
+    return rows;
 };
 exports.parseResponse = parseResponse;
 /**

@@ -1,6 +1,6 @@
 {
   "name": "@ts3/query-utils",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "TeamSpeak 3 ServerQuery tools",
   "main": "index.js",
   "scripts": {

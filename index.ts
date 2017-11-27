@@ -354,7 +354,7 @@ let buildQuery = (cmd: string, params: object, flags: Array<string>) : string =>
  */
 let parseResponse = (str: string) : object => {
 
-    return str.split('|').map((k: string) => {
+    let rows: any[] = str.split('|').map((k: string) => {
 
         let row: any = {};
 
@@ -371,8 +371,16 @@ let parseResponse = (str: string) : object => {
 
         });
 
+        if(row.length === 0)
+            row = null;
+
+        if(row.length === 1)
+            row = row.shift();
+
         return row;
     });
+
+    return rows;
 };
 
 /**
