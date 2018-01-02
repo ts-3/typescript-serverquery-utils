@@ -354,33 +354,38 @@ let buildQuery = (cmd: string, params: object, flags: Array<string>) : string =>
  */
 let parseResponse = (str: string) : object => {
 
-    let rows: any[] = str.split('|').map((k: string) => {
+    return str.split('|').map((k: string) => {
 
         let row: any = {};
 
         k.split(/\s/).forEach((v: any) => {
 
             let pos: number = v.indexOf('=');
-            if(pos > -1) {
+            if (pos > -1) {
                 let key = unescape(v.substr(0, pos));
                 let value = unescape(v.substr(pos + 1, v.length));
-                row[key] = parseInt(value, 10) === +value ? parseInt(value, 10) : value;
-            } else if(!isEmpty(v)) {
+                if(key === 'client_servergroups') {
+                    row[key] = [];
+                    value.split(",").forEach((g: any) => {
+                        row[key].push(parseInt(g));
+                    });
+                } else {
+                    row[key] = parseInt(value, 10) === +value ? parseInt(value, 10) : value;
+                }
+            } else if (!isEmpty(v)) {
                 row[v] = '';
             }
 
         });
 
-        if(row.length === 0)
+        if (row.length === 0)
             row = null;
 
-        if(row.length === 1)
+        if (row.length === 1)
             row = row.shift();
 
         return row;
     });
-
-    return rows;
 };
 
 /**

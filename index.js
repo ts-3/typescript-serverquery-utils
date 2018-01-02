@@ -340,14 +340,22 @@ exports.buildQuery = buildQuery;
  * @return Object Parsed response
  */
 let parseResponse = (str) => {
-    let rows = str.split('|').map((k) => {
+    return str.split('|').map((k) => {
         let row = {};
         k.split(/\s/).forEach((v) => {
             let pos = v.indexOf('=');
             if (pos > -1) {
                 let key = unescape(v.substr(0, pos));
                 let value = unescape(v.substr(pos + 1, v.length));
-                row[key] = parseInt(value, 10) === +value ? parseInt(value, 10) : value;
+                if (key === 'client_servergroups') {
+                    row[key] = [];
+                    value.split(",").forEach((g) => {
+                        row[key].push(parseInt(g));
+                    });
+                }
+                else {
+                    row[key] = parseInt(value, 10) === +value ? parseInt(value, 10) : value;
+                }
             }
             else if (!lodash_1.isEmpty(v)) {
                 row[v] = '';
@@ -359,7 +367,6 @@ let parseResponse = (str) => {
             row = row.shift();
         return row;
     });
-    return rows;
 };
 exports.parseResponse = parseResponse;
 /**
