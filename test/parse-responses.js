@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * ISC License
  *
@@ -17,6 +15,7 @@
  * OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
  * PERFORMANCE OF THIS SOFTWARE.
  */
+'use strict'
 
 let ts3utils = require('../index');
 let assert = require('assert');
@@ -24,21 +23,30 @@ let expect = require('chai').expect;
 
 describe('parseResponse', function() {
 
-  it('Empty response', function() {
-    let rows = ts3utils.parseResponse('');
-    expect(rows).to.be.an.array;
-    assert.equal(rows.length, 1)
-  });
+    it('Empty response', function() {
+        let rows = ts3utils.parseResponse('');
+        expect(rows).to.be.an.array;
+        assert.equal(rows.length, 1)
+    });
 
-  it('Should return parsed error', function() {
-    let err = ts3utils.parseResponse('error id=0 msg=ok')
-    expect(err).to.deep.equal([ { error: '', id: 0, msg: 'ok' } ])
-  });
+    it('Should return parsed error', function() {
+        let err = ts3utils.parseResponse('error id=0 msg=ok')
+        expect(err).to.deep.equal([ { error: '', id: 0, msg: 'ok' } ])
+    });
 
 
-  it('Should return parsed response', function() {
-    let rows = ts3utils.parseResponse('instance instance_uptime=1903203 host_timestamp_utc=1259337246 virtualservers_running_total=1 connection_filetransfer_bandwidth_sent=0|instance_uptime=1903203 host_timestamp_utc=1259337246 virtualservers_running_total=1 connection_filetransfer_bandwidth_sent=0')
-    expect(rows).to.deep.equal([ { instance: '', instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 }, { instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 } ])
-  })
+    it('Should return parsed response', function() {
+        let rows = ts3utils.parseResponse('instance instance_uptime=1903203 host_timestamp_utc=1259337246 virtualservers_running_total=1 connection_filetransfer_bandwidth_sent=0|instance_uptime=1903203 host_timestamp_utc=1259337246 virtualservers_running_total=1 connection_filetransfer_bandwidth_sent=0');
+        expect(rows).to.deep.equal([ { instance: '', instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 }, { instance_uptime: 1903203, host_timestamp_utc: 1259337246, virtualservers_running_total: 1, connection_filetransfer_bandwidth_sent: 0 } ]);
+    });
 
+    it('Should return parsed single servergroup', () => {
+        let rows = ts3utils.parseResponse('client_servergroups=2');
+        expect(rows).to.deep.equal([ { client_servergroups: [ 2 ] } ]);
+    });
+
+    it('Should return parsed multiple servergroups', () => {
+        let rows = ts3utils.parseResponse('client_servergroups=2,6');
+        expect(rows).to.deep.equal([ { client_servergroups: [ 2, 6 ] } ]);
+    });
 });
